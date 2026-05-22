@@ -116,7 +116,7 @@
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 10px; /* เว้นระยะระหว่างไอคอนกับข้อความ */
         }
 
         h2 i {
@@ -134,7 +134,7 @@
         /* การจัดตารางข้อมูลทั่วไป */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
@@ -147,8 +147,8 @@
             flex-direction: column;
         }
 
-        /* ส่วนของสิ่งที่ชอบและการ์ดสามช่อง */
-        .fav-grid {
+        /* ส่วนของสิ่งที่ชอบ (Favorites) */
+        .fav-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
@@ -173,10 +173,11 @@
             margin-bottom: 12px;
         }
 
-        /* แยกสีไอคอนตามประเภท */
-        .fav-card.food i { color: #e67e22; }      
-        .fav-card.color i { color: #27ae60; }     
-        .fav-card.subject i { color: #2980b9; }   
+        .fav-card.food i { color: #e67e22; }      /* สีส้มสำหรับอาหาร */
+        .fav-card.color i { color: #27ae60; }     /* สีเขียวสำหรับสีที่ชอบ */
+        .fav-card.subject-en i { color: #2980b9; }/* สีน้ำเงินสำหรับ English */
+        .fav-card.subject-comp i { color: #9b59b6; }/* สีม่วงสำหรับคอมพิวเตอร์ */
+        .fav-card.subject-math i { color: #e74c3c; }/* สีแดงสำหรับคณิตศาสตร์ */
 
         .fav-title {
             font-size: 0.85rem;
@@ -194,8 +195,8 @@
         /* วงกลมแสดงสีที่ชอบ */
         .color-preview {
             display: inline-block;
-            width: 15px;
-            height: 15px;
+            width: 16px;
+            height: 16px;
             background-color: #2ecc71;
             border-radius: 50%;
             margin-left: 5px;
@@ -227,5 +228,114 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-            100% { transform: translateY(0px
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* รองรับการแสดงผลบนมือถือ */
+        @media (max-width: 600px) {
+            body { padding: 15px 10px; }
+            .resume-content { padding: 25px 20px; }
+            .profile-header h1 { font-size: 1.8rem; }
+            .info-grid, .fav-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        
+        <header class="profile-header">
+            <div class="profile-img-container">
+                <img src="https://via.placeholder.com/150" alt="เด็กชายธนรักษ์ ปาวิลา" class="profile-img">
+                <div class="badge-icon"><i class="fa-solid fa-star"></i></div>
+            </div>
+            <h1>เด็กชายธนรักษ์ ปาวิลา</h1>
+            <div class="nickname">ชื่อเล่น: พอตเตอร์ <i class="fa-solid fa-wand-sparkles floating-icon"></i></div>
+        </header>
+
+        <div class="resume-content">
+            
+            <section>
+                <h2><i class="fa-solid fa-user"></i> ข้อมูลทั่วไป (Profile)</h2>
+                <div class="info-grid">
+                    <div class="info-box">
+                        <span style="font-size: 0.85rem; color: #7f8c8d;">ชื่อ-นามสกุล</span>
+                        <span style="font-size: 1.1rem; font-weight: 500;">ด.ช. ธนรักษ์ ปาวิลา</span>
+                    </div>
+                    <div class="info-box">
+                        <span style="font-size: 0.85rem; color: #7f8c8d;">วันเกิด</span>
+                        <span style="font-size: 1.1rem; font-weight: 500;">22 ตุลาคม พ.ศ. 2554</span>
+                    </div>
+                    <div class="info-box">
+                        <span style="font-size: 0.85rem; color: #7f8c8d;">สัญชาติ</span>
+                        <span style="font-size: 1.1rem; font-weight: 500;">ไทย</span>
+                    </div>
+                    <div class="info-box">
+                        <span style="font-size: 0.85rem; color: #7f8c8d;">สถานะ</span>
+                        <span style="font-size: 1.1rem; font-weight: 500;">นักเรียน</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2><i class="fa-solid fa-heart"></i> สิ่งที่ชอบ (Favorites)</h2>
+                <div class="fav-container">
+                    
+                    <div class="fav-card food">
+                        <i class="fa-solid fa-bowl-rice"></i>
+                        <span class="fav-title">อาหารที่ชอบ</span>
+                        <p class="fav-detail">ข้าวขาหมู</p>
+                    </div>
+
+                    <div class="fav-card color">
+                        <i class="fa-solid fa-palette"></i>
+                        <span class="fav-title">สีที่ชอบ</span>
+                        <p class="fav-detail">สีเขียว <span class="color-preview"></span></p>
+                    </div>
+
+                    <div class="fav-card subject-en">
+                        <i class="fa-solid fa-book"></i>
+                        <span class="fav-title">วิชาที่ชอบ</span>
+                        <p class="fav-detail">English</p>
+                    </div>
+
+                    <div class="fav-card subject-comp">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <span class="fav-title">วิชาที่ชอบ</span>
+                        <p class="fav-detail">คอมพิวเตอร์</p>
+                    </div>
+
+                    <div class="fav-card subject-math">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span class="fav-title">วิชาที่ชอบ</span>
+                        <p class="fav-detail">คณิตศาสตร์</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section>
+                <h2><i class="fa-solid fa-user-group"></i> เพื่อนสนิท (Best Friend)</h2>
+                <div class="friend-box">
+                    <i class="fa-solid fa-user-astronaut floating-icon"></i>
+                    <div>
+                        <span style="font-size: 0.85rem; color: #7f8c8d; display: block;">Best Friend</span>
+                        <span style="font-size: 1.2rem; font-weight: 500; color: #2c3e50;">พีท</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2><i class="fa-solid fa-graduation-cap"></i> ประวัติการศึกษาเพิ่มเติม</h2>
+                <div class="info-box" style="border-left-color: #3498db;">
+                    <span style="font-size: 1.1rem; font-weight: 500; color:#2c3e50;">กำลังศึกษาอยู่ชั้นประถมศึกษา / มัธยมศึกษา</span>
+                    <span style="font-size: 0.9rem; color: #7f8c8d; margin-top: 5px;"><i class="fa-solid fa-location-dot"></i> พิมพ์ชื่อโรงเรียนของคุณตรงนี้ได้เลย</span>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+</body>
+</html>
