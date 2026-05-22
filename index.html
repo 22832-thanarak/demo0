@@ -116,7 +116,7 @@
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px; /* เว้นระยะระหว่างไอคอนกับข้อความ */
+            gap: 10px;
         }
 
         h2 i {
@@ -134,7 +134,7 @@
         /* การจัดตารางข้อมูลทั่วไป */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
@@ -147,23 +147,11 @@
             flex-direction: column;
         }
 
-        .info-box span class-label {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            margin-bottom: 2px;
-        }
-
-        .info-box span class-value {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #2c3e50;
-        }
-
-        /* ส่วนของสิ่งที่ชอบ (Favorites) */
-        .fav-container {
+        /* ส่วนของสิ่งที่ชอบและการ์ดสามช่อง */
+        .fav-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
         }
 
         .fav-card {
@@ -172,46 +160,64 @@
             padding: 20px;
             border-radius: 16px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .fav-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.1);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.12);
         }
 
         .fav-card i {
             font-size: 2rem;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        .fav-card.food i { color: #e67e22; } /* สีส้มสำหรับอาหาร */
-        .fav-card.color i { color: #27ae60; } /* สีเขียวสำหรับสีที่ชอบ */
+        /* แยกสีไอคอนตามประเภท */
+        .fav-card.food i { color: #e67e22; }      
+        .fav-card.color i { color: #27ae60; }     
+        .fav-card.subject i { color: #2980b9; }   
 
         .fav-title {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #888;
             display: block;
+            margin-bottom: 2px;
         }
 
         .fav-detail {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 500;
             color: #2c3e50;
-            margin-top: 2px;
         }
 
         /* วงกลมแสดงสีที่ชอบ */
         .color-preview {
             display: inline-block;
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
             background-color: #2ecc71;
             border-radius: 50%;
             margin-left: 5px;
             vertical-align: middle;
             border: 2px solid #ffffff;
             box-shadow: 0 0 4px rgba(0,0,0,0.2);
+        }
+
+        /* ส่วนเพื่อนสนิท */
+        .friend-box {
+            background: #fffcf4;
+            padding: 15px 20px;
+            border-radius: 14px;
+            border-left: 4px solid #f1c40f;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .friend-box i {
+            color: #f1c40f;
+            font-size: 1.5rem;
         }
 
         /* สไตล์อนิเมชันสำหรับความน่ารัก */
@@ -221,85 +227,5 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* รองรับการแสดงผลบนมือถือ */
-        @media (max-width: 600px) {
-            body { padding: 15px 10px; }
-            .resume-content { padding: 25px 20px; }
-            .profile-header h1 { font-size: 1.8rem; }
-            .info-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="resume-container">
-        
-        <header class="profile-header">
-            <div class="profile-img-container">
-                <img src="https://via.placeholder.com/150" alt="เด็กชายธนรักษ์ ปาวิลา" class="profile-img">
-                <div class="badge-icon"><i class="fa-solid fa-star"></i></div>
-            </div>
-            <h1>เด็กชายธนรักษ์ ปาวิลา</h1>
-            <div class="nickname">ชื่อเล่น: พอตเตอร์ <i class="fa-solid fa-wand-sparkles floating-icon"></i></div>
-        </header>
-
-        <div class="resume-content">
-            
-            <section>
-                <h2><i class="fa-solid fa-user"></i> ข้อมูลทั่วไป (Profile)</h2>
-                <div class="info-grid">
-                    <div class="info-box">
-                        <span style="font-size: 0.85rem; color: #7f8c8d;">ชื่อ-นามสกุล</span>
-                        <span style="font-size: 1.1rem; font-weight: 500;">ด.ช. ธนรักษ์ ปาวิลา</span>
-                    </div>
-                    <div class="info-box">
-                        <span style="font-size: 0.85rem; color: #7f8c8d;">วันเกิด</span>
-                        <span style="font-size: 1.1rem; font-weight: 500;">22 ตุลาคม พ.ศ. 2554</span>
-                    </div>
-                    <div class="info-box">
-                        <span style="font-size: 0.85rem; color: #7f8c8d;">สัญชาติ</span>
-                        <span style="font-size: 1.1rem; font-weight: 500;">ไทย</span>
-                    </div>
-                    <div class="info-box">
-                        <span style="font-size: 0.85rem; color: #7f8c8d;">สถานะ</span>
-                        <span style="font-size: 1.1rem; font-weight: 500;">นักเรียน</span>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2><i class="fa-solid fa-heart"></i> สิ่งที่ชอบ (Favorites)</h2>
-                <div class="info-grid">
-                    
-                    <div class="fav-card food">
-                        <i class="fa-solid fa-bowl-rice"></i>
-                        <span class="fav-title">อาหารที่ชอบ</span>
-                        <p class="fav-detail">ข้าวขาหมู</p>
-                    </div>
-
-                    <div class="fav-card color">
-                        <i class="fa-solid fa-palette"></i>
-                        <span class="fav-title">สีที่ชอบ</span>
-                        <p class="fav-detail">สีเขียว <span class="color-preview"></span></p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section>
-                <h2><i class="fa-solid fa-graduation-cap"></i> ประวัติการศึกษาเพิ่มเติม</h2>
-                <div class="info-box" style="border-left-color: #f1c40f;">
-                    <span style="font-size: 1.1rem; font-weight: 500; color:#2c3e50;">กำลังศึกษาอยู่ชั้นประถมศึกษา / มัธยมศึกษา</span>
-                    <span style="font-size: 0.9rem; color: #7f8c8d; margin-top: 5px;"><i class="fa-solid fa-location-dot"></i> พิมพ์ชื่อโรงเรียนของคุณตรงนี้ได้เลย</span>
-                </div>
-            </section>
-
-        </div>
-    </div>
-
-</body>
-</html>
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px
