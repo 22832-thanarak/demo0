@@ -11,18 +11,12 @@
         
         body {
             margin: 0;
-            padding: 0;
+            padding: 20px;
             font-family: 'Sarabun', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f4f8;
             color: #2c3e50;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
-        }
-
-        /* Page Configuration for A4 Printability */
-        @page {
-            size: A4;
-            margin: 15mm 12mm;
         }
 
         /* Container & Layout */
@@ -46,14 +40,8 @@
         }
 
         .header-content {
-            display: table;
-            width: 100%;
-        }
-
-        .avatar-cell {
-            display: table-cell;
-            width: 110px;
-            vertical-align: middle;
+            display: flex;
+            align-items: center;
         }
 
         .avatar-placeholder {
@@ -62,21 +50,22 @@
             background-color: rgba(255, 255, 255, 0.2);
             border: 3px solid #ffffff;
             border-radius: 50%;
-            text-align: center;
-            line-height: 84px;
-            font-size: 36pt;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
             font-weight: bold;
             color: #ffffff;
+            margin-right: 20px;
+            flex-shrink: 0;
         }
 
         .info-cell {
-            display: table-cell;
-            vertical-align: middle;
-            padding-left: 20px;
+            flex-grow: 1;
         }
 
         .student-title {
-            font-size: 14pt;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #bfdbfe;
@@ -85,40 +74,27 @@
         }
 
         .student-name {
-            font-size: 24pt;
+            font-size: 28px;
             margin: 0 0 5px 0;
             font-weight: 700;
         }
 
         .student-school {
-            font-size: 13pt;
+            font-size: 16px;
             color: #eff6ff;
             margin: 0;
             font-weight: 400;
         }
 
-        /* Grid & Columns Structure using Table Display for WeasyPrint compatibility */
+        /* Layout Grid */
         .profile-body {
             padding: 25px;
         }
 
         .main-layout {
-            display: table;
-            width: 100%;
-        }
-
-        .left-column {
-            display: table-cell;
-            width: 50%;
-            padding-right: 15px;
-            vertical-align: top;
-        }
-
-        .right-column {
-            display: table-cell;
-            width: 50%;
-            padding-left: 15px;
-            vertical-align: top;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         /* Section Cards Styling */
@@ -129,11 +105,11 @@
             border-radius: 0 8px 8px 0;
             margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            page-break-inside: avoid;
+            break-inside: avoid;
         }
 
         .section-title {
-            font-size: 13pt;
+            font-size: 16px;
             color: #1e3a8a;
             margin: 0 0 12px 0;
             font-weight: 700;
@@ -143,10 +119,9 @@
 
         /* Data Rows */
         .data-row {
-            display: table;
-            width: 100%;
+            display: flex;
             margin-bottom: 8px;
-            font-size: 11pt;
+            font-size: 14px;
         }
 
         .data-row:last-child {
@@ -154,30 +129,24 @@
         }
 
         .data-label {
-            display: table-cell;
             width: 40%;
             font-weight: 600;
             color: #64748b;
         }
 
         .data-value {
-            display: table-cell;
             width: 60%;
             color: #334155;
         }
 
         /* Tags / Pills Display */
-        .tag-container {
-            margin-top: 5px;
-        }
-
         .tag-pill {
             display: inline-block;
             background-color: #dbeafe;
             color: #1e40af;
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 10pt;
+            font-size: 13px;
             font-weight: 600;
             margin-right: 6px;
             margin-bottom: 6px;
@@ -189,43 +158,47 @@
         }
 
         .tag-pill.hobby {
-            background-color: #dcfce7;
-            color: #166534;
+            background-color: #e8f5e9;
+            color: #2e7d32;
         }
 
         /* Motto Section */
         .motto-box {
-            background: linear-gradient(to right, #eff6ff, #dbcaef00);
+            background: linear-gradient(to right, #eff6ff, rgba(219, 234, 254, 0));
             border-left: 4px solid #8b5cf6;
-            padding: 15px;
+            padding: 20px;
             border-radius: 0 8px 8px 0;
-            margin-top: 5px;
-            margin-bottom: 5px;
+            margin-top: 10px;
             text-align: center;
-            page-break-inside: avoid;
+            break-inside: avoid;
         }
 
         .motto-title {
-            font-size: 10pt;
+            font-size: 12px;
             color: #6d28d9;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 0 0 4px 0;
+            margin: 0 0 6px 0;
             font-weight: 700;
         }
 
         .motto-text {
-            font-size: 13pt;
+            font-size: 18px;
             font-style: italic;
             color: #4c1d95;
             margin: 0;
             font-weight: 600;
         }
 
-        /* Print adjustments */
+        /* Page Configuration for A4 Printability */
         @media print {
+            @page {
+                size: A4;
+                margin: 15mm 12mm;
+            }
             body {
                 background-color: #ffffff;
+                padding: 0;
             }
             .page-container {
                 box-shadow: none;
@@ -238,12 +211,9 @@
 <body>
 
     <div class="page-container">
-        <!-- Header -->
         <div class="profile-header">
             <div class="header-content">
-                <div class="avatar-cell">
-                    <div class="avatar-placeholder">พ</div>
-                </div>
+                <div class="avatar-placeholder">พ</div>
                 <div class="info-cell">
                     <p class="student-title">STUDENT PROFILE CARD</p>
                     <h1 class="student-name">เด็กชาย ธนรักษ์ ปาวิลา (พอตเตอร์)</h1>
@@ -252,13 +222,10 @@
             </div>
         </div>
 
-        <!-- Body Content -->
         <div class="profile-body">
             <div class="main-layout">
                 
-                <!-- Left Column -->
-                <div class="left-column">
-                    <!-- ข้อมูลทั่วไป -->
+                <div class="column-left">
                     <div class="info-section">
                         <h2 class="section-title">ข้อมูลทั่วไป (General Info)</h2>
                         <div class="data-row">
@@ -284,91 +251,3 @@
                         <div class="data-row">
                             <div class="data-label">ภูมิลำเนา:</div>
                             <div class="data-value">เชียงใหม่</div>
-                        </div>
-                    </div>
-
-                    <!-- ด้านการเรียน -->
-                    <div class="info-section">
-                        <h2 class="section-title">การเรียน (Academic)</h2>
-                        <div class="data-row" style="margin-bottom: 12px;">
-                            <div class="data-label" style="display:block; width:100%; margin-bottom:5px;">วิชาที่ชอบ:</div>
-                            <div class="data-value" style="display:block; width:100%;">
-                                <span class="tag-pill">อังกฤษ</span>
-                            </div>
-                        </div>
-                        <div class="data-row">
-                            <div class="data-label" style="display:block; width:100%; margin-bottom:5px;">วิชาที่ยาก:</div>
-                            <div class="data-value" style="display:block; width:100%;">
-                                <span class="tag-pill negative">ศิลป์</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column -->
-                <div class="right-column">
-                    <!-- กิจกรรมและไลฟ์สไตล์ -->
-                    <div class="info-section">
-                        <h2 class="section-title">กิจกรรม & ไลฟ์สไตล์ (Lifestyle)</h2>
-                        <div class="data-row">
-                            <div class="data-label">ชมรม/กิจกรรม:</div>
-                            <div class="data-value">E-sport</div>
-                        </div>
-                        <div class="data-row">
-                            <div class="data-label">งานอดิเรก:</div>
-                            <div class="data-value">เล่นเกม</div>
-                        </div>
-                        <div class="data-row">
-                            <div class="data-label">กีฬา:</div>
-                            <div class="data-value">บาสเกตบอล</div>
-                        </div>
-                        <div class="data-row">
-                            <div class="data-label">เพื่อนสนิท:</div>
-                            <div class="data-value">พีท</div>
-                        </div>
-                    </div>
-
-                    <!-- ความชอบส่วนตัว -->
-                    <div class="info-section">
-                        <h2 class="section-title">ความชอบส่วนตัว (Preferences)</h2>
-                        <div class="data-row">
-                            <div class="data-label">อาหารโปรด:</div>
-                            <div class="data-value">ข้าวขาหมู</div>
-                        </div>
-                        <div class="data-row">
-                            <div class="data-label">สีโปรด:</div>
-                            <div class="data-value"><span class="tag-pill hobby" style="background-color:#e8f5e9; color:#2e7d32; padding:2px 8px;">สีเขียว</span></div>
-                        </div>
-                        <div class="data-row">
-                            <div class="data-label">เพลงที่ชอบ:</div>
-                            <div class="data-value">-</div>
-                        </div>
-                        <div class="data-row">
-                            <div class="data-label">ซีรีส์/อนิเมะ:</div>
-                            <div class="data-value">-</div>
-                        </div>
-                    </div>
-
-                    <!-- เป้าหมายอนาคต -->
-                    <div class="info-section">
-                        <h2 class="section-title">อนาคต (Future)</h2>
-                        <div class="data-row">
-                            <div class="data-label">ความฝัน/อาชีพ:</div>
-                            <div class="data-value" style="font-weight: bold; color: #1e3a8a;">อาชีพครู</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- คติประจำใจ (เต็มความกว้างด้านล่าง) -->
-            <div class="motto-box">
-                <p class="motto-title">คติประจำใจ</p>
-                <p class="motto-text">"[คติ]"</p>
-            </div>
-
-        </div>
-    </div>
-
-</body>
-</html>
