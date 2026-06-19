@@ -51,7 +51,7 @@
             border-bottom: 5px solid #60a5fa;
         }
 
-        /* รูปโปรไฟล์จำลอง (Avatar) */
+        /* รูปโปรไฟล์วงกลม (Avatar) */
         .avatar-container {
             width: 100px;
             height: 100px;
@@ -61,11 +61,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 42px;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
             flex-shrink: 0;
+            overflow: hidden; /* บังคับให้รูปภาพที่อยู่ข้างในตัดเป็นทรงกลมตามกรอบ */
+        }
+
+        /* ปรับแต่งรูปภาพข้างในโปรไฟล์ */
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* ทำให้รูปขยายเต็มวงกลมและไม่เบี้ยว */
         }
 
         .header-info h1 {
@@ -153,7 +157,7 @@
         .pill-gray { background-color: #f1f5f9; color: #64748b; font-weight: 400; }
         .pill-orange { background-color: #ffedd5; color: #c2410c; }
         .pill-purple { background-color: #f3e8ff; color: #6b21a8; }
-        .pill-teal { background-color: #ccfbf1; color: #115e59; } /* สีเขียวมิ้นต์/น้ำทะเล สำหรับซีรีส์ */
+        .pill-teal { background-color: #ccfbf1; color: #115e59; }
 
         /* กล่องคติประจำใจด้านล่าง */
         .motto-section {
@@ -224,10 +228,13 @@
     </style>
 </head>
 <body>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNt2xQtFvph3FQFlM5sRlQMsLSvv67Ap4tdQ&s" alt="คำอธิบายรูปภาพ"width="500">
+
     <div class="profile-card">
         <div class="card-header">
-            <div class="avatar-container">พ</div>
+            <!-- ย้ายรูปมาใส่ในกล่องโปรไฟล์ทรงกลมตรงนี้เรียบร้อยครับ -->
+            <div class="avatar-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNt2xQtFvph3FQFlM5sRlQMsLSvv67Ap4tdQ&s" alt="รูปโปรไฟล์ของ ธนรักษ์ ปาวิลา">
+            </div>
             <div class="header-info">
                 <h1>เด็กชาย ธนรักษ์ ปาวิลา (พอตเตอร์)</h1>
                 <p>โรงเรียนจอมทอง &bull; ระดับชั้น มัธยมศึกษาปีที่ 3</p>
